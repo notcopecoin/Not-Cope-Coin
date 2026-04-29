@@ -4,8 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<img src="logo.png" width="1400">
-    
 <title>NOTCOPE ($NCOPE)</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
@@ -16,41 +14,35 @@ body {
     font-family: 'Orbitron', sans-serif;
     background: black;
     color: white;
-    overflow-x: hidden;
 }
 
-/* PARTICLES */
-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
+/* BANNER */
+.banner {
+    width: 100%;
+    height: 260px;
+    background: url('banner.png') center/cover no-repeat;
 }
 
 /* HEADER */
 header {
     text-align: center;
-    padding: 120px 20px;
+    padding: 60px 20px;
 }
 
 h1 {
-    font-size: 4em;
+    font-size: 3.5em;
     background: linear-gradient(90deg, gold, orange);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.subtitle {
-    opacity: 0.7;
-}
-
 button {
-    padding: 15px 30px;
+    padding: 14px 30px;
     margin: 10px;
     border-radius: 10px;
     border: none;
-    cursor: pointer;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .buy {
@@ -64,9 +56,9 @@ button {
     color: gold;
 }
 
-/* SECTIONS */
+/* GRID */
 section {
-    padding: 80px 20px;
+    padding: 70px 20px;
     max-width: 1100px;
     margin: auto;
 }
@@ -74,39 +66,71 @@ section {
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    gap: 25px;
 }
 
 .card {
     background: rgba(255,255,255,0.05);
     padding: 25px;
     border-radius: 15px;
-    backdrop-filter: blur(10px);
     text-align: center;
+    backdrop-filter: blur(10px);
     transition: 0.3s;
+    position: relative;
 }
 
 .card:hover {
-    transform: translateY(-10px) scale(1.05);
+    transform: scale(1.05);
+}
+
+/* IMAGES */
+.card img {
+    width: 120px;
+    margin-bottom: 15px;
+    transition: 0.3s;
+}
+
+.card:hover img {
+    transform: scale(1.2);
+}
+
+/* COMING SOON */
+.coming {
+    opacity: 0.5;
+}
+
+.coming img {
+    filter: grayscale(100%);
+}
+
+.badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: gold;
+    color: black;
+    padding: 5px 10px;
+    font-size: 0.7em;
+    border-radius: 8px;
+    font-weight: bold;
 }
 
 /* COUNTER */
 .counter {
-    font-size: 2em;
     text-align: center;
-    margin-top: 30px;
+    font-size: 1.8em;
     color: gold;
 }
 
-/* FLOAT ANIMATION */
+/* FLOAT */
 .float {
     animation: float 3s ease-in-out infinite;
 }
 
 @keyframes float {
-    0% {transform: translateY(0px);}
+    0% {transform: translateY(0);}
     50% {transform: translateY(-15px);}
-    100% {transform: translateY(0px);}
+    100% {transform: translateY(0);}
 }
 
 footer {
@@ -119,24 +143,57 @@ footer {
 
 <body>
 
-<canvas id="bg"></canvas>
+<div class="banner"></div>
 
 <header>
     <h1 class="float">NOTCOPE</h1>
-    <p class="subtitle">NOT SURE → HOLD → COPE</p>
+    <p>From NOT SURE → HOLD → COPE</p>
 
     <button class="buy" onclick="window.open('https://pump.fun')">Buy on Pump.fun</button>
     <button class="wallet" onclick="connectWallet()">Connect Wallet</button>
 
-    <div class="counter" id="holders">Holders: 1,245</div>
+    <div class="counter" id="holders">Holders: 1245</div>
 </header>
 
 <section>
     <h2>Market Psychology</h2>
+
     <div class="grid">
-        <div class="card">😐 NOTSURE<br>Should I buy?</div>
-        <div class="card">💎 HOLD<br>I'm not selling.</div>
-        <div class="card">🤡 COPE<br>Still early...</div>
+
+        <!-- NOTSURE (LIVE) -->
+        <div class="card">
+            <img src="notsure.png">
+            <h3>NOTSURE (LIVE)</h3>
+            <p>The first emotional phase is live now</p>
+        </div>
+
+        <!-- HOLD (COMING SOON) -->
+        <div class="card coming">
+            <span class="badge">COMING SOON</span>
+            <img src="hold.png">
+            <h3>HOLD</h3>
+            <p>Next phase unlocking soon...</p>
+        </div>
+
+        <!-- COPE (COMING SOON) -->
+        <div class="card coming">
+            <span class="badge">COMING SOON</span>
+            <img src="cope.png">
+            <h3>COPE</h3>
+            <p>Final stage not launched yet</p>
+        </div>
+
+    </div>
+</section>
+
+<section>
+    <h2>How to Buy</h2>
+    <div class="card">
+        1. Install Phantom Wallet<br><br>
+        2. Buy SOL<br><br>
+        3. Go to Pump.fun<br><br>
+        4. Search NOTCOPE<br><br>
+        5. Buy & HOLD 💎
     </div>
 </section>
 
@@ -146,15 +203,8 @@ footer {
         <div class="card">Supply<br><b>1B</b></div>
         <div class="card">Liquidity<br><b>Locked</b></div>
         <div class="card">Tax<br><b>0%</b></div>
-        <div class="card">Holders<br><b>Growing</b></div>
+        <div class="card">Community<br><b>Driven</b></div>
     </div>
-</section>
-
-<section>
-    <h2>Roadmap</h2>
-    <div class="card">Phase 1 — Launch</div>
-    <div class="card">Phase 2 — Marketing</div>
-    <div class="card">Phase 3 — Expansion</div>
 </section>
 
 <footer>
@@ -162,55 +212,14 @@ NOTCOPE is a meme coin. No intrinsic value. Just vibes.
 </footer>
 
 <script>
-// PARTICLES
-const canvas = document.getElementById("bg");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-for(let i=0;i<100;i++){
-    particles.push({
-        x: Math.random()*canvas.width,
-        y: Math.random()*canvas.height,
-        r: Math.random()*2,
-        d: Math.random()*1
-    });
-}
-
-function draw(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="gold";
-    particles.forEach(p=>{
-        ctx.beginPath();
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fill();
-    });
-    update();
-}
-
-function update(){
-    particles.forEach(p=>{
-        p.y += p.d;
-        if(p.y > canvas.height){
-            p.y = 0;
-            p.x = Math.random()*canvas.width;
-        }
-    });
-}
-
-setInterval(draw, 33);
-
-// FAKE HOLDER COUNTER
+// HOLDER COUNTER
 let holders = 1245;
 setInterval(()=>{
     holders += Math.floor(Math.random()*3);
     document.getElementById("holders").innerText = "Holders: " + holders;
 }, 3000);
 
-// WALLET (BÁSICO)
+// WALLET
 function connectWallet(){
     if(window.ethereum){
         alert("Wallet connected 🚀");
