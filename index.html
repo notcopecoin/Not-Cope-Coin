@@ -247,14 +247,6 @@ NOTCOPE is a meme coin. No intrinsic value. Just vibes.
 </footer>
 
 <script>
-// HOLDER COUNTER
-let holders = 1245;
-setInterval(()=>{
-    holders += Math.floor(Math.random()*3);
-    document.getElementById("holders").innerText = "Holders: " + holders;
-}, 3000);
-
-<script>
 
 /* LLUVIA DE MONEDAS */
 function createCoin(){
@@ -271,6 +263,15 @@ function createCoin(){
 }
 
 setInterval(createCoin, 200);
+
+
+// HOLDER COUNTER
+let holders = 1245;
+setInterval(()=>{
+    holders += Math.floor(Math.random()*3);
+    document.getElementById("holders").innerText = "Holders: " + holders;
+}, 3000);
+}
 
 /* WALLET */
 function connectWallet(){
