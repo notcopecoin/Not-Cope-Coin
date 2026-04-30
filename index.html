@@ -16,21 +16,20 @@ body {
     overflow-x: hidden;
 }
 
-/* BANNER SIN CORTE */
+/* BANNER */
 .banner img {
     width: 100%;
-    height: auto;
     display: block;
 }
 
 /* HEADER */
 header {
     text-align: center;
-    padding: 60px 20px;
+    padding: 50px 20px;
 }
 
 h1 {
-    font-size: 3.5em;
+    font-size: 3em;
     background: linear-gradient(90deg, gold, orange);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -105,48 +104,42 @@ section {
     border-radius: 8px;
 }
 
-/* COUNTER */
-.counter {
-    text-align: center;
-    font-size: 1.8em;
-    color: gold;
-}
-
-/* FLOAT */
-.float {
-    animation: float 3s ease-in-out infinite;
-}
-
-@keyframes float {
-    0% {transform: translateY(0);}
-    50% {transform: translateY(-15px);}
-    100% {transform: translateY(0);}
-}
-
 /* ROADMAP */
+.roadmap {
+    text-align: center;
+}
+
 .step {
     margin: 20px 0;
     padding: 15px;
     border-left: 3px solid gold;
 }
 
-/* COUNTER */
-.counter {
-    font-size: 2em;
-    text-align: center;
-    margin-top: 30px;
+/* SOCIALS */
+.socials a {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    border: 1px solid gold;
+    border-radius: 10px;
     color: gold;
+    text-decoration: none;
 }
 
-/* FLOAT ANIMATION */
-.float {
-    animation: float 3s ease-in-out infinite;
+/* LLUVIA DE MONEDAS */
+.coin {
+    position: fixed;
+    top: -50px;
+    font-size: 20px;
+    animation: fall linear infinite;
+    color: gold;
+    pointer-events: none;
 }
 
-@keyframes float {
-    0% {transform: translateY(0px);}
-    50% {transform: translateY(-15px);}
-    100% {transform: translateY(0px);}
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+    }
 }
 
 footer {
@@ -159,110 +152,9 @@ footer {
 
 <body>
 
-<canvas id="bg"></canvas>
-
-<header>
-    <h1 class="float">NOTCOPE</h1>
-    <p class="subtitle">NOT SURE → HOLD → COPE</p>
-
-    <button class="buy" onclick="window.open('https://dexscreener.com')">Buy Now</button>
-    <button class="wallet" onclick="connectWallet()">Connect Wallet</button>
-
-    <div class="counter" id="holders">Holders: 1,245</div>
-</header>
-
-<section>
-    <h2>Market Psychology</h2>
-    <div class="grid">
-        <div class="card">😐 NOTSURE<br>Should I buy?</div>
-        <div class="card">💎 HOLD<br>I'm not selling.</div>
-        <div class="card">🤡 COPE<br>Still early...</div>
-    </div>
-</section>
-
-<section>
-    <h2>Tokenomics</h2>
-    <div class="grid">
-        <div class="card">Supply<br><b>1B</b></div>
-        <div class="card">Liquidity<br><b>Locked</b></div>
-        <div class="card">Tax<br><b>0%</b></div>
-        <div class="card">Holders<br><b>Growing</b></div>
-    </div>
-</section>
-
-<section>
-    <h2>Roadmap</h2>
-    <div class="card">Phase 1 — Launch</div>
-    <div class="card">Phase 2 — Marketing</div>
-    <div class="card">Phase 3 — Expansion</div>
-</section>
-
-<footer>
-NOTCOPE is a meme coin. No intrinsic value. Just vibes.
-</footer>
-
-<script>
-// PARTICLES
-const canvas = document.getElementById("bg");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-for(let i=0;i<100;i++){
-    particles.push({
-        x: Math.random()*canvas.width,
-        y: Math.random()*canvas.height,
-        r: Math.random()*2,
-        d: Math.random()*1
-    });
-}
-
-function draw(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="gold";
-    particles.forEach(p=>{
-        ctx.beginPath();
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fill();
-    });
-    update();
-}
-
-function update(){
-    particles.forEach(p=>{
-        p.y += p.d;
-        if(p.y > canvas.height){
-            p.y = 0;
-            p.x = Math.random()*canvas.width;
-        }
-    });
-}
-
-setInterval(draw, 33);
-
-// FAKE HOLDER COUNTER
-let holders = 1245;
-setInterval(()=>{
-    holders += Math.floor(Math.random()*3);
-    document.getElementById("holders").innerText = "Holders: " + holders;
-}, 3000);
-
-// WALLET (BÁSICO)
-function connectWallet(){
-    if(window.ethereum){
-        alert("Wallet connected 🚀");
-    } else {
-        alert("Install MetaMask");
-    }
-}
-</script>
-
 <!-- BANNER -->
 <div class="banner">
-    <img src="banner.png" alt="banner">
+    <img src="banner.png">
 </div>
 
 <header>
@@ -273,9 +165,9 @@ function connectWallet(){
     <button class="wallet" onclick="connectWallet()">Connect Wallet</button>
 </header>
 
+<!-- CARDS -->
 <section>
 <h2>Market Psychology</h2>
-
 <div class="grid">
 
 <div class="card">
@@ -301,20 +193,26 @@ function connectWallet(){
 </div>
 </section>
 
-<section>
+<!-- ROADMAP -->
+<section class="roadmap">
 <h2>Roadmap</h2>
+
 <div class="step">Phase 1: Launch NOTSURE 🚀</div>
-<div class="step">Phase 2: Grow Community 📈</div>
+<div class="step">Phase 2: Build community 📈</div>
 <div class="step">Phase 3: Launch HOLD 💎</div>
-<div class="step">Phase 4: Viral Expansion 🔥</div>
+<div class="step">Phase 4: Massive hype 🔥</div>
 <div class="step">Phase 5: Launch COPE 🤡</div>
+
 </section>
 
+<!-- SOCIALS -->
 <section class="socials">
 <h2>Join the Community</h2>
+
 <a href="#">Twitter</a>
 <a href="#">Telegram</a>
 <a href="#">Discord</a>
+
 </section>
 
 <footer>
@@ -323,35 +221,21 @@ NOTCOPE is a meme coin. No intrinsic value. Just vibes.
 
 <script>
 
-/* LLUVIA ULTRA PRO */
-const coinImages = ["notsure.png", "hold.png", "cope.png"];
-
+/* LLUVIA DE MONEDAS */
 function createCoin(){
-    const coin = document.createElement("img");
-
-    coin.src = coinImages[Math.floor(Math.random()*coinImages.length)];
-
+    const coin = document.createElement("div");
     coin.classList.add("coin");
+    coin.innerText = "🪙";
 
     coin.style.left = Math.random() * 100 + "vw";
-    coin.style.width = (Math.random() * 40 + 20) + "px";
-    coin.style.opacity = Math.random();
-
-    const duration = Math.random() * 4 + 4;
-
-    coin.style.animationDuration = duration + "s, 4s";
+    coin.style.animationDuration = (Math.random() * 3 + 2) + "s";
 
     document.body.appendChild(coin);
 
-    setTimeout(()=> coin.remove(), duration * 1000);
+    setTimeout(()=> coin.remove(), 5000);
 }
 
-/* CONTROL DE RENDIMIENTO */
-setInterval(()=>{
-    if(document.querySelectorAll('.coin').length < 40){
-        createCoin();
-    }
-}, 200);
+setInterval(createCoin, 200);
 
 /* WALLET */
 function connectWallet(){
