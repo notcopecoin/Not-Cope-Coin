@@ -129,11 +129,11 @@ section {
 /* LLUVIA DE MONEDAS */
 .coin {
     position: fixed;
-    top: -50px;
-    font-size: 10px;
-    animation: fall linear infinite;
-    color: gold;
+    top: -80px;
     pointer-events: none;
+    z-index: 999;
+    animation: fall linear forwards, spin linear infinite;
+    filter: drop-shadow(0 0 8px gold);
 }
 
 @keyframes fall {
@@ -142,6 +142,11 @@ section {
     }
 }
 
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+    
 footer {
     text-align: center;
     padding: 40px;
@@ -242,21 +247,33 @@ NOTCOPE is a meme coin. No intrinsic value. Just vibes.
 <script>
 
 /* LLUVIA DE MONEDAS */
+/* LLUVIA ULTRA PRO */
+const coinImages = ["notsure.png", "hold.png", "cope.png"];
+
 function createCoin(){
-    const coin = document.createElement("div");
+    const coin = document.createElement("img");
+
+    coin.src = coinImages[Math.floor(Math.random()*coinImages.length)];
     coin.classList.add("coin");
-    coin.innerText = "🪙";
 
     coin.style.left = Math.random() * 100 + "vw";
-    coin.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    coin.style.width = (Math.random() * 35 + 20) + "px";
+    coin.style.opacity = Math.random();
+
+    const duration = Math.random() * 4 + 4;
+    coin.style.animationDuration = duration + "s, 4s";
 
     document.body.appendChild(coin);
 
-    setTimeout(()=> coin.remove(), 5000);
+    setTimeout(()=> coin.remove(), duration * 1000);
 }
 
-setInterval(createCoin, 200);
-
+/* CONTROL PARA QUE NO LAGEE */
+setInterval(()=>{
+    if(document.querySelectorAll('.coin').length < 40){
+        createCoin();
+    }
+}, 180);
 
 /* WALLET */
 function connectWallet(){
