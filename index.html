@@ -258,7 +258,7 @@ function createCoin(){
 
     coin.style.left = Math.random() * 100 + "vw";
     coin.style.width = (Math.random() * 35 + 20) + "px";
-    coin.style.opacity = Math.random();
+    coin.style.opacity = Math.random() * 0.5 + 0.5;
 
     const duration = Math.random() * 4 + 4;
     coin.style.animationDuration = duration + "s, 4s";
