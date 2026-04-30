@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>NOTCOPE ($NCOPE)</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
@@ -14,36 +13,30 @@ body {
     font-family: 'Orbitron', sans-serif;
     background: black;
     color: white;
+    overflow-x: hidden;
 }
-    
-/* PARTICLES */
-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: -1;
-}
-    
-/* BANNER */
-.banner {
+
+/* BANNER SIN CORTE */
+.banner img {
     width: 100%;
-    height: 500px;
-    background: url('banner.png') center/cover no-repeat;
+    height: auto;
+    display: block;
 }
 
 /* HEADER */
 header {
     text-align: center;
-    padding: 60px 20px;
+    padding: 50px 20px;
 }
 
 h1 {
-    font-size: 3.5em;
+    font-size: 3em;
     background: linear-gradient(90deg, gold, orange);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
+/* BOTONES */
 button {
     padding: 14px 30px;
     margin: 10px;
@@ -66,7 +59,7 @@ button {
 
 /* GRID */
 section {
-    padding: 70px 20px;
+    padding: 60px 20px;
     max-width: 1100px;
     margin: auto;
 }
@@ -91,24 +84,14 @@ section {
     transform: scale(1.05);
 }
 
-/* IMAGES */
 .card img {
     width: 120px;
     margin-bottom: 15px;
-    transition: 0.3s;
-}
-
-.card:hover img {
-    transform: scale(1.2);
 }
 
 /* COMING SOON */
 .coming {
     opacity: 0.5;
-}
-
-.coming img {
-    filter: grayscale(100%);
 }
 
 .badge {
@@ -120,25 +103,45 @@ section {
     padding: 5px 10px;
     font-size: 0.7em;
     border-radius: 8px;
-    font-weight: bold;
 }
 
-/* COUNTER */
-.counter {
-    text-align: center;
-    font-size: 1.8em;
+/* ROADMAP */
+.step {
+    margin: 20px 0;
+    padding: 15px;
+    border-left: 3px solid gold;
+}
+
+/* SOCIALS */
+.socials a {
+    display: inline-block;
+    margin: 10px;
+    padding: 10px 20px;
+    border: 1px solid gold;
+    border-radius: 10px;
     color: gold;
+    text-decoration: none;
 }
 
-/* FLOAT */
-.float {
-    animation: float 3s ease-in-out infinite;
+/* LLUVIA ULTRA */
+.coin {
+    position: fixed;
+    top: -80px;
+    pointer-events: none;
+    z-index: 999;
+    animation: fall linear forwards, spin linear infinite;
+    filter: drop-shadow(0 0 8px gold);
 }
 
-@keyframes float {
-    0% {transform: translateY(0);}
-    50% {transform: translateY(-15px);}
-    100% {transform: translateY(0);}
+@keyframes fall {
+    to {
+        transform: translateY(110vh);
+    }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 footer {
@@ -146,115 +149,66 @@ footer {
     padding: 40px;
     color: gray;
 }
-
-<script>
-// PARTICLES
-const canvas = document.getElementById("bg");
-const ctx = canvas.getContext("2d");
-
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let particles = [];
-
-for(let i=0;i<100;i++){
-    particles.push({
-        x: Math.random()*canvas.width,
-        y: Math.random()*canvas.height,
-        r: Math.random()*2,
-        d: Math.random()*1
-    });
-}
-
-function draw(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="gold";
-    particles.forEach(p=>{
-        ctx.beginPath();
-        ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-        ctx.fill();
-    });
-    update();
-}
-
-function update(){
-    particles.forEach(p=>{
-        p.y += p.d;
-        if(p.y > canvas.height){
-            p.y = 0;
-            p.x = Math.random()*canvas.width;
-        }
-    });
-}
-
-    
 </style>
 </head>
 
 <body>
 
-<div class="banner"></div>
+<!-- BANNER -->
+<div class="banner">
+    <img src="banner.png" alt="banner">
+</div>
 
 <header>
-    <h1 class="float">NOTCOPE</h1>
-    <p>From NOT SURE → HOLD → COPE</p>
+    <h1>NOTCOPE</h1>
+    <p>NOT SURE → HOLD → COPE</p>
 
     <button class="buy" onclick="window.open('https://pump.fun')">Buy on Pump.fun</button>
     <button class="wallet" onclick="connectWallet()">Connect Wallet</button>
-
-    <div class="counter" id="holders">Holders: 1245</div>
 </header>
 
 <section>
-    <h2>Market Psychology</h2>
+<h2>Market Psychology</h2>
 
-    <div class="grid">
+<div class="grid">
 
-        <!-- NOTSURE (LIVE) -->
-        <div class="card">
-            <img src="notsure.png">
-            <h3>NOTSURE (LIVE)</h3>
-            <p>The first emotional phase is live now</p>
-        </div>
+<div class="card">
+<img src="notsure.png">
+<h3>NOTSURE (LIVE)</h3>
+<p>First phase live now</p>
+</div>
 
-        <!-- HOLD (COMING SOON) -->
-        <div class="card coming">
-            <span class="badge">COMING SOON</span>
-            <img src="hold.png">
-            <h3>HOLD</h3>
-            <p>Next phase unlocking soon...</p>
-        </div>
+<div class="card coming">
+<span class="badge">COMING SOON</span>
+<img src="hold.png">
+<h3>HOLD</h3>
+<p>Next phase coming...</p>
+</div>
 
-        <!-- COPE (COMING SOON) -->
-        <div class="card coming">
-            <span class="badge">COMING SOON</span>
-            <img src="cope.png">
-            <h3>COPE</h3>
-            <p>Final stage not launched yet</p>
-        </div>
+<div class="card coming">
+<span class="badge">COMING SOON</span>
+<img src="cope.png">
+<h3>COPE</h3>
+<p>Final stage</p>
+</div>
 
-    </div>
+</div>
 </section>
 
 <section>
-    <h2>How to Buy</h2>
-    <div class="card">
-        1. Install Phantom Wallet<br><br>
-        2. Buy SOL<br><br>
-        3. Go to Pump.fun<br><br>
-        4. Search NOTCOPE<br><br>
-        5. Buy & HOLD 💎
-    </div>
+<h2>Roadmap</h2>
+<div class="step">Phase 1: Launch NOTSURE 🚀</div>
+<div class="step">Phase 2: Grow Community 📈</div>
+<div class="step">Phase 3: Launch HOLD 💎</div>
+<div class="step">Phase 4: Viral Expansion 🔥</div>
+<div class="step">Phase 5: Launch COPE 🤡</div>
 </section>
 
-<section>
-    <h2>Tokenomics</h2>
-    <div class="grid">
-        <div class="card">Supply<br><b>1B</b></div>
-        <div class="card">Liquidity<br><b>Locked</b></div>
-        <div class="card">Tax<br><b>0%</b></div>
-        <div class="card">Community<br><b>Driven</b></div>
-    </div>
+<section class="socials">
+<h2>Join the Community</h2>
+<a href="#">Twitter</a>
+<a href="#">Telegram</a>
+<a href="#">Discord</a>
 </section>
 
 <footer>
@@ -262,21 +216,42 @@ NOTCOPE is a meme coin. No intrinsic value. Just vibes.
 </footer>
 
 <script>
-// HOLDER COUNTER
-let holders = 1245;
-setInterval(()=>{
-    holders += Math.floor(Math.random()*3);
-    document.getElementById("holders").innerText = "Holders: " + holders;
-}, 3000);
 
-// WALLET
-function connectWallet(){
-    if(window.ethereum){
-        alert("Wallet connected 🚀");
-    } else {
-        alert("Install MetaMask");
-    }
+/* LLUVIA ULTRA PRO */
+const coinImages = ["notsure.png", "hold.png", "cope.png"];
+
+function createCoin(){
+    const coin = document.createElement("img");
+
+    coin.src = coinImages[Math.floor(Math.random()*coinImages.length)];
+
+    coin.classList.add("coin");
+
+    coin.style.left = Math.random() * 100 + "vw";
+    coin.style.width = (Math.random() * 40 + 20) + "px";
+    coin.style.opacity = Math.random();
+
+    const duration = Math.random() * 4 + 4;
+
+    coin.style.animationDuration = duration + "s, 4s";
+
+    document.body.appendChild(coin);
+
+    setTimeout(()=> coin.remove(), duration * 1000);
 }
+
+/* CONTROL DE RENDIMIENTO */
+setInterval(()=>{
+    if(document.querySelectorAll('.coin').length < 40){
+        createCoin();
+    }
+}, 200);
+
+/* WALLET */
+function connectWallet(){
+    alert("Wallet coming soon 🚀");
+}
+
 </script>
 
 </body>
