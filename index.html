@@ -26,11 +26,11 @@ body {
 /* HEADER */
 header {
     text-align: center;
-    padding: 50px 20px;
+    padding: 60px 20px;
 }
 
 h1 {
-    font-size: 3em;
+    font-size: 3.5em;
     background: linear-gradient(90deg, gold, orange);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -103,6 +103,24 @@ section {
     padding: 5px 10px;
     font-size: 0.7em;
     border-radius: 8px;
+}
+
+/* COUNTER */
+.counter {
+    text-align: center;
+    font-size: 1.8em;
+    color: gold;
+}
+
+/* FLOAT */
+.float {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% {transform: translateY(0);}
+    50% {transform: translateY(-15px);}
+    100% {transform: translateY(0);}
 }
 
 /* ROADMAP */
