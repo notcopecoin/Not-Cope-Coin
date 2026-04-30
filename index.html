@@ -55,6 +55,13 @@ button {
     border: 2px solid gold;
     color: gold;
 }
+    
+/* COUNTER */
+.counter {
+    text-align: center;
+    font-size: 1.8em;
+    color: gold;
+}
 
 /* GRID */
 section {
@@ -239,6 +246,14 @@ footer {
 <footer>
 NOTCOPE is a meme coin. No intrinsic value. Just vibes.
 </footer>
+
+<script>
+// HOLDER COUNTER
+let holders = 1245;
+setInterval(()=>{
+    holders += Math.floor(Math.random()*3);
+    document.getElementById("holders").innerText = "Holders: " + holders;
+}, 3000);
 
 <script>
 
