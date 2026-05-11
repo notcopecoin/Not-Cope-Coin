@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOTCOPE ($NCOPE)</title>
+<title>NCOPE ($NCOPE)</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 
@@ -111,49 +111,13 @@ section {
     text-decoration: none;
 }
 
-/* LLUVIA DE MONEDAS */
-.coin {
-    position: fixed;
-    top: -80px;
-    pointer-events: none;
-    z-index: 999;
-    animation: fall linear forwards;
-}
-
-.coin-img {
-    display: block;
-    animation: spin 4s linear infinite;
-    filter: drop-shadow(0 0 8px gold);
-}
-
-@keyframes fall {
-    to {
-        transform: translateY(110vh);
-    }
-}
-
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-    
-footer {
-    text-align: center;
-    padding: 40px;
-    color: gray;
-}
-</style>
-</head>
-
-<body>
-
 <!-- BANNER -->
 <div class="banner">
     <img src="banner.png">
 </div>
 
 <header>
-    <h1>NOTCOPE</h1>
+    <h1>NCOPE</h1>
     <p>NOT SURE → HOLD → COPE</p>
 
     <button class="buy" onclick="window.open('https://pump.fun/coin/8RV9Hmr5CTHJuX9VSWqjNHuFDVrQ4JK19knfhCWFpump')">Buy on Pump.fun</button>
@@ -220,36 +184,7 @@ NOTCOPE is a meme coin. No intrinsic value. Just vibes.
 
 <script>
 
-/* LLUVIA DE MONEDAS */
-/* LLUVIA ULTRA PRO */
-const coinImages = ["cope.png"];
-    
-function createCoin(){
-    const wrapper = document.createElement("div");
-    const coin = document.createElement("img");
 
-    coin.src = coinImages[Math.floor(Math.random()*coinImages.length)];
-
-    wrapper.classList.add("coin");
-    coin.classList.add("coin-img");
-
-    wrapper.style.left = Math.random() * 100 + "vw";
-
-    const size = (Math.random() * 35 + 20);
-    coin.style.width = size + "px";
-
-    coin.style.opacity = Math.random() * 0.5 + 0.5;
-
-    const duration = Math.random() * 4 + 4;
-    wrapper.style.animationDuration = duration + "s";
-    coin.style.animationDuration = "4s";
-
-    wrapper.appendChild(coin);
-    document.body.appendChild(wrapper);
-
-    setTimeout(()=> wrapper.remove(), duration * 1000);
-}
-    
 /* CONTROL PARA QUE NO LAGEE */
 setInterval(()=>{
     if(document.querySelectorAll('.coin').length < 40){
