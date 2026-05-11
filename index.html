@@ -3,197 +3,365 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>NCOPE ($NCOPE)</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
 
 <style>
-body {
-    margin: 0;
-    font-family: 'Orbitron', sans-serif;
-    background: black;
-    color: white;
-    overflow-x: hidden;
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Orbitron',sans-serif;
+    background:#050505;
+    color:white;
+    overflow-x:hidden;
+}
+
+/* BACKGROUND */
+body::before{
+    content:'';
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+    radial-gradient(circle at top, rgba(255,215,0,0.12), transparent 40%),
+    radial-gradient(circle at bottom, rgba(255,215,0,0.08), transparent 30%);
+    z-index:-1;
 }
 
 /* BANNER */
-.banner img {
-    width: 100%;
-    display: block;
+.banner img{
+    width:100%;
+    display:block;
 }
 
 /* HEADER */
-header {
-    text-align: center;
-    padding: 50px 20px;
+header{
+    text-align:center;
+    padding:70px 20px;
 }
 
-h1 {
-    font-size: 3em;
-    background: linear-gradient(90deg, gold, orange);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.logo{
+    width:220px;
+    margin-bottom:25px;
 }
 
-/* BOTONES */
-button {
-    padding: 14px 30px;
-    margin: 10px;
-    border-radius: 10px;
-    border: none;
-    font-weight: bold;
-    cursor: pointer;
+h1{
+    font-size:4rem;
+    font-weight:900;
+    background:linear-gradient(90deg,gold,orange);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    margin-bottom:15px;
 }
 
-.buy {
-    background: gold;
-    color: black;
+.subtitle{
+    color:#ccc;
+    font-size:1.2rem;
+    margin-bottom:30px;
 }
 
-.wallet {
-    background: transparent;
-    border: 2px solid gold;
-    color: gold;
+/* BUTTONS */
+.buttons{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+}
+
+button{
+    padding:15px 30px;
+    border:none;
+    border-radius:12px;
+    font-weight:bold;
+    cursor:pointer;
+    font-size:1rem;
+    transition:.3s;
+}
+
+.buy{
+    background:gold;
+    color:black;
+    box-shadow:0 0 20px rgba(255,215,0,0.5);
+}
+
+.buy:hover{
+    transform:scale(1.08);
+}
+
+.wallet{
+    background:transparent;
+    border:2px solid gold;
+    color:gold;
+}
+
+.wallet:hover{
+    background:gold;
+    color:black;
+}
+
+/* SECTIONS */
+section{
+    max-width:1200px;
+    margin:auto;
+    padding:80px 20px;
+}
+
+h2{
+    text-align:center;
+    font-size:2.2rem;
+    margin-bottom:40px;
+    color:gold;
 }
 
 /* GRID */
-section {
-    padding: 60px 20px;
-    max-width: 1100px;
-    margin: auto;
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
+.card{
+    background:rgba(255,255,255,0.04);
+    border:1px solid rgba(255,215,0,0.2);
+    border-radius:20px;
+    padding:30px;
+    text-align:center;
+    transition:.3s;
+    backdrop-filter:blur(10px);
 }
 
-.card {
-    background: rgba(255,255,255,0.05);
-    padding: 25px;
-    border-radius: 15px;
-    text-align: center;
-    backdrop-filter: blur(10px);
-    transition: 0.3s;
-    position: relative;
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 25px rgba(255,215,0,0.2);
 }
 
-.card:hover {
-    transform: scale(1.05);
-}
-
-.card img {
-    width: 300px;
-    margin-bottom: 15px;
+.card img{
+    width:100%;
+    max-width:260px;
 }
 
 /* ROADMAP */
-.roadmap {
-    text-align: center;
+.roadmap .step{
+    background:rgba(255,255,255,0.04);
+    margin:20px 0;
+    padding:20px;
+    border-left:4px solid gold;
+    border-radius:10px;
 }
 
-.step {
-    margin: 20px 0;
-    padding: 15px;
-    border-left: 3px solid gold;
+/* TOKENOMICS */
+.tokenomics .card b{
+    font-size:2rem;
+    color:gold;
 }
 
 /* SOCIALS */
-.socials a {
-    display: inline-block;
-    margin: 10px;
-    padding: 10px 20px;
-    border: 1px solid gold;
-    border-radius: 10px;
-    color: gold;
-    text-decoration: none;
+.socials{
+    text-align:center;
 }
+
+.socials a{
+    display:inline-block;
+    margin:10px;
+    padding:14px 28px;
+    border:2px solid gold;
+    border-radius:12px;
+    color:gold;
+    text-decoration:none;
+    transition:.3s;
+}
+
+.socials a:hover{
+    background:gold;
+    color:black;
+}
+
+/* FOOTER */
+footer{
+    text-align:center;
+    padding:40px 20px;
+    color:#777;
+    font-size:.9rem;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+h1{
+    font-size:2.7rem;
+}
+
+.logo{
+    width:160px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
 
 <!-- BANNER -->
 <div class="banner">
-    <img src="banner.png">
+    <img src="banner.png" alt="NCOPE Banner">
 </div>
 
+<!-- HEADER -->
 <header>
-    <h1>NCOPE</h1>
-    <p>NOT SURE → HOLD → COPE</p>
 
-    <button class="buy" onclick="window.open('https://pump.fun/coin/8RV9Hmr5CTHJuX9VSWqjNHuFDVrQ4JK19knfhCWFpump')">Buy on Pump.fun</button>
-    <button class="wallet" onclick="connectWallet()">Connect Wallet</button>
+<img src="logo.png" class="logo">
+
+<h1>NCOPE</h1>
+
+<p class="subtitle">
+NOTSURE → HOLD → COPE
+</p>
+
+<div class="buttons">
+
+<button class="buy"
+onclick="window.open('https://pump.fun/coin/8RV9Hmr5CTHJuX9VSWqjNHuFDVrQ4JK19knfhCWFpump')">
+BUY ON PUMP.FUN
+</button>
+
+<button class="wallet"
+onclick="connectWallet()">
+CONNECT WALLET
+</button>
+
+</div>
+
 </header>
 
-<!-- CARDS -->
+<!-- MARKET -->
 <section>
-<h2>Market Psychology</h2>
+
+<h2>MARKET PSYCHOLOGY</h2>
+
 <div class="grid">
 
 <div class="card">
 <img src="notsure.png">
+<h3>NOTSURE</h3>
+<p>"This looks interesting..."</p>
+</div>
+
+<div class="card">
+<img src="hold.png">
+<h3>HOLD</h3>
+<p>"I'll just hold."</p>
+</div>
+
+<div class="card">
+<img src="cope.png">
+<h3>COPE</h3>
+<p>"It will recover..."</p>
 </div>
 
 </div>
+
 </section>
 
 <!-- ROADMAP -->
 <section class="roadmap">
-<h2>Roadmap</h2>
 
-<div class="step">Phase 1: Launch NOTSURE 🚀</div>
-<div class="step">Phase 2: Build community 📈</div>
-<div class="step">Phase 3: Launch HOLD 💎</div>
-<div class="step">Phase 4: Massive hype 🔥</div>
-<div class="step">Phase 5: Launch COPE 🤡</div>
+<h2>ROADMAP</h2>
+
+<div class="step">🚀 Phase 1 — Launch on Pump.fun</div>
+
+<div class="step">📈 Phase 2 — Build Community</div>
+
+<div class="step">💎 Phase 3 — Meme Expansion</div>
+
+<div class="step">🔥 Phase 4 — Massive Hype</div>
+
+<div class="step">👽 Phase 5 — We Are All NCOPE</div>
 
 </section>
-    
+
+<!-- HOW TO BUY -->
 <section>
-    <h2>How to Buy</h2>
-    <div class="card">
-        1. Install Phantom Wallet<br><br>
-        2. Buy SOL<br><br>
-        3. Go to Pump.fun<br><br>
-        4. Search NOTSURE<br><br>
-        5. Buy & HOLD 💎
-    </div>
+
+<h2>HOW TO BUY</h2>
+
+<div class="card">
+
+1. Install Phantom Wallet 👻<br><br>
+
+2. Buy SOL 💰<br><br>
+
+3. Open Pump.fun 🚀<br><br>
+
+4. Search NCOPE 👽<br><br>
+
+5. Buy & HOLD 💎
+
+</div>
+
 </section>
 
-<section>
-    <h2>Tokenomics</h2>
-    <div class="grid">
-        <div class="card">Supply<br><b>1B</b></div>
-        <div class="card">Liquidity<br><b>Locked</b></div>
-        <div class="card">Tax<br><b>0%</b></div>
-        <div class="card">Community<br><b>Driven</b></div>
-    </div>
+<!-- TOKENOMICS -->
+<section class="tokenomics">
+
+<h2>TOKENOMICS</h2>
+
+<div class="grid">
+
+<div class="card">
+Supply<br><br>
+<b>1B</b>
+</div>
+
+<div class="card">
+Liquidity<br><br>
+<b>LOCKED</b>
+</div>
+
+<div class="card">
+Tax<br><br>
+<b>0%</b>
+</div>
+
+<div class="card">
+Community<br><br>
+<b>DRIVEN</b>
+</div>
+
+</div>
+
 </section>
 
 <!-- SOCIALS -->
 <section class="socials">
-<h2>Join the Community</h2>
 
-<a href="https://x.com/notcopecoin">-X- ( TWITTER )</a>
+<h2>JOIN THE COMMUNITY</h2>
 
+<a href="https://x.com/notcopecoin" target="_blank">
+X / TWITTER
+</a>
 
 </section>
 
 <footer>
-NOTCOPE is a meme coin. No intrinsic value. Just vibes.
+
+NCOPE is a meme coin.<br>
+No intrinsic value.<br>
+Just vibes 👽
+
 </footer>
 
 <script>
 
-
-/* CONTROL PARA QUE NO LAGEE */
-setInterval(()=>{
-    if(document.querySelectorAll('.coin').length < 40){
-        createCoin();
-    }
-}, 180);
-
-/* WALLET */
 function connectWallet(){
-    alert("Wallet coming soon 🚀");
+    alert("Wallet integration coming soon 🚀");
 }
 
 </script>
